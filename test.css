@@ -1,0 +1,65 @@
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+div.overheadButtons{
+	text-align: center;
+	margin-bottom: 10em;
+}
+
+button{
+	display: inline-block;
+}
+
+div.ImageContainer {
+	text-align: center;
+	display: block;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+img.economistLogo{
+	height:17em;
+	margin-bottom: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	display: block;
+}
+
+img.NewYorkLogo{
+	width:70em;
+	height:11em;
+	margin-bottom: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	display: block;
+}
+
+img.guardianLogo{
+	width:70em;
+	height:11em;
+	margin-bottom: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	display: block;
+}
+
+img.newYorkerLogo{
+	width:70em;
+	height:11em;
+	margin-bottom: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	display: block;
+}

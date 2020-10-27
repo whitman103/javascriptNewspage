@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://static.sekandocdn.net/static/feednami/feednami-client-v1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="test.css">
+</head>
+
+<body>
+
+<h1>Johnny Whitman's News Reel of Consistently Stable Coding and Algorithms</h1>
+
+
+<div class="overheadButtons">
+
+<button type="button" onclick="newYorkTimesCall()" id="standard">New York Times, World</button>
+<button type="button" onclick="newYorkerCall()" id="standard">the New Yorker</button>
+<button type="button" onclick="economistCall('https://www.economist.com/europe/rss.xml')" id="standard">Economist, Europe</button>
+<button type="button" onclick="economistCall('https://www.economist.com/special-report/rss.xml')" id="standard">Economist, Special Reports</button>
+<button type="button" onclick="atlanticCall()" id="standard">The Atlantic</button>
+<button type="button" onclick="guardianCall('https://www.theguardian.com/world/rss')" id="standard">The Guardian, World</button>
+<button type="button" onclick="guardianCall('https://www.theguardian.com/us/rss')" id="standard">The Guardian, US News</button>
+
+
+
+</div>
+</body>
+
+<script>
+function guardianCall(inUrl){
+		resetPage();
+		var guardianLogo=document.createElement("img");
+		guardianLogo.id="JournalLogo";
+		guardianLogo.setAttribute("src","https://angloville.com/wp-content/uploads/2019/02/the-guardian-logo-2018.png");
+		guardianLogo.classList.add("guardianLogo");
+		document.body.appendChild(guardianLogo);
+		var outsideDiv=document.createElement("div");
+		outsideDiv.id="overallDiv";
+		var feed=feednami.load(inUrl)
+		.then(feed => {
+		for(index=0;index<10;index++){
+			var newDiv=document.createElement("div");
+			
+			var para=document.createElement("a");
+			para.href=feed.entries[index].link;
+			var node=document.createTextNode(feed.entries[index].title);
+			para.appendChild(node);
+			
+			var description=document.createElement("p");
+			description.innerHTML=feed.entries[index].summary;
+			
+			var img1=document.createElement("img");
+			var smallImg="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+			console.log(feed.entries[index]);
+			
+			var imageTest= new Image();
+				imageTest.onload= function(){
+					img1.src=smallImg;
+					img1.setAttribute("width",600);
+					img1.setAttribute("height",400);
+				}
+				imageTest.onerror= function(){
+					img1.src="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+					img1.setAttribute("height",600);
+					img1.setAttribute("width",600);
+					}
+				imageTest.src=smallImg;
+			newDiv.appendChild(img1);
+			
+			
+			var div1=document.createElement("div",id="Img Div");
+			div1.classList.add("ImageContainer");
+			div1.appendChild(img1);
+			outsideDiv.appendChild(div1);
+			
+			newDiv.appendChild(para);
+			newDiv.appendChild(description);
+			newDiv.appendChild(div1);
+			outsideDiv.appendChild(newDiv);
+		}
+		document.body.appendChild(outsideDiv);
+	console.log(feed);
+	}
+	)
+	}
+
+</script>
+
+<script>
+function atlanticCall(){
+	resetPage();
+	const url= "https://www.theatlantic.com/feed/best-of/"
+	var outsideDiv=document.createElement("div");
+	outsideDiv.id="overallDiv";
+	var feed=feednami.load(url)
+	.then(feed => {
+		for(index=0;index<10;index++){
+			var newDiv=document.createElement("div");
+			
+			var para=document.createElement("a");
+			para.href=feed.entries[index].link;
+			var node=document.createTextNode(feed.entries[index].title);
+			para.appendChild(node);
+			
+			var description=document.createElement("p");
+			description.innerHTML=feed.entries[index].summary;
+			
+			var img1=document.createElement("img");
+			var smallImg="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+			console.log(feed.entries[index]);
+			
+			var imageTest= new Image();
+				imageTest.onload= function(){
+					img1.src=smallImg;
+					img1.setAttribute("width",600);
+					img1.setAttribute("height",400);
+				}
+				imageTest.onerror= function(){
+					img1.src="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+					img1.setAttribute("height",600);
+					img1.setAttribute("width",600);
+					}
+				imageTest.src=smallImg;
+			newDiv.appendChild(img1);
+			
+			
+			var div1=document.createElement("div",id="Img Div");
+			div1.classList.add("ImageContainer");
+			div1.appendChild(img1);
+			outsideDiv.appendChild(div1);
+			
+			newDiv.appendChild(para);
+			newDiv.appendChild(description);
+			newDiv.appendChild(div1);
+			outsideDiv.appendChild(newDiv);
+		}
+		document.body.appendChild(outsideDiv);
+	console.log(feed);
+	}
+	)
+}
+</script>
+
+<script>
+function economistCall(inUrl){
+	resetPage();
+	var economistLogo=document.createElement("img");
+	economistLogo.src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/The_Economist_Logo.svg/1200px-The_Economist_Logo.svg.png";
+	economistLogo.classList.add("economistLogo");
+	economistLogo.id="JournalLogo";
+	document.body.appendChild(economistLogo);
+	
+	const url = inUrl
+	var outsideDiv=document.createElement("div");
+	outsideDiv.id="overallDiv";
+	var feed=feednami.load(url)
+	.then(feed => {
+		for(index=0;index<10;index++){
+			var newDiv=document.createElement("div");
+			
+			
+			var para=document.createElement("a");
+			para.href=feed.entries[index].link
+			var node=document.createTextNode(feed.entries[index].title);
+			para.appendChild(node);
+			
+			var description=document.createElement("p");
+			description.innerHTML=feed.entries[index].description;
+			
+			
+			
+			newDiv.appendChild(para);
+			newDiv.appendChild(description);
+			outsideDiv.appendChild(newDiv);
+			
+			
+			
+		
+			}
+			document.body.appendChild(outsideDiv);
+		}
+	)
+	console.log(feed);
+
+}
+</script>
+
+<script>
+function setsource() {return "https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";};
+</script>
+
+<script>
+function resetPage(){
+	var toRemove=document.getElementById("JournalLogo");
+	if(toRemove!=null){
+		toRemove.parentNode.removeChild(toRemove);
+		}
+	var nullCheck=document.getElementById("overallDiv");
+		if(nullCheck!=null){
+			nullCheck.parentNode.removeChild(nullCheck);
+		}
+}
+</script>
+
+<script>
+	function newYorkTimesCall(){
+		resetPage();
+			
+		var newYorkLogo=document.createElement("img");
+		newYorkLogo.id="JournalLogo";
+		newYorkLogo.setAttribute("src","https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png");
+		newYorkLogo.classList.add("NewYorkLogo");
+		document.body.appendChild(newYorkLogo);
+		var outsideDiv=document.createElement("div");
+		outsideDiv.id="overallDiv";
+		var feed="https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+		jQuery.get("https://rss.nytimes.com/services/xml/rss/nyt/World.xml", function (data) {
+			$(data).find("item").each(function (index) { // or "item" or whatever suits your feed
+				var el = $(this);
+				
+				
+				var overallDiv=document.createElement("div");
+				
+				if(index<5){
+				
+				
+					var newDiv=document.createElement("div");
+					
+					
+					var para=document.createElement("a");
+					para.href=el.find("link").text()
+					var node=document.createTextNode(el.find("title").text());
+					para.appendChild(node);
+					
+					var img1=document.createElement("img");
+					var smallImg=el.find("media\\:content,content").attr('url');
+					//smallImg=smallImg.replace("moth.jpg","superJumbo.jpg");
+					var imageTest= new Image();
+					imageTest.onload= function(){
+						img1.src=smallImg;
+					img1.setAttribute("width",600);
+					img1.setAttribute("height",400);
+						}
+					imageTest.onerror= function(){
+						img1.src="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+						img1.setAttribute("height",600);
+						img1.setAttribute("width",600);
+						}
+					imageTest.src=smallImg;
+					
+					
+					newDiv.appendChild(para);
+					newDiv.appendChild(img1);
+					
+					
+					var div1=document.createElement("div",id="Img Div");
+					div1.classList.add("ImageContainer");
+					div1.appendChild(img1);
+					overallDiv.appendChild(div1);
+					
+					var photographerCred=document.createElement("p");
+					photographerCred.classList.add("photographerCred");
+					photographerCred.innerHTML=el.find("media\\:credit").text();
+					newDiv.appendChild(photographerCred);
+					overallDiv.appendChild(newDiv);
+					outsideDiv.appendChild(overallDiv);
+				} else{
+					document.body.appendChild(outsideDiv);
+					return false
+				}
+			});
+		});
+	}
+</script>
+
+
+<script>
+	function newYorkerCall(){
+	resetPage();
+	var newYorkerLogo=document.createElement("img");
+	newYorkerLogo.src="http://www.finalcut-edit.com/wp-content/uploads/2014/07/the-new-yorker-logo.jpg";
+	newYorkerLogo.classList.add("newYorkerLogo");
+	newYorkerLogo.id="JournalLogo";
+	document.body.appendChild(newYorkerLogo);
+	
+	var outsideDiv=document.createElement("div");
+	outsideDiv.id="overallDiv";
+	jQuery.get("https://www.newyorker.com/feed/everything", function (data) {
+		$(data).find("item").each(function (index) { // or "item" or whatever suits your feed
+			var el = $(this);
+			
+			
+			var overallDiv=document.createElement("div");
+		
+			
+			if(index<5){
+			
+			
+				var newDiv=document.createElement("div");
+				
+				
+				var para=document.createElement("a");
+				para.href=el.find("link").text()
+				var node=document.createTextNode(el.find("title").text());
+				para.appendChild(node);
+				
+				var description=document.createElement("p");
+				description.innerHTML=el.find("description").text();
+				
+				var img1=document.createElement("img");
+				var smallImg=el.find("media\\:thumbnail,thumbnail").attr('url');
+				var imageTest= new Image();
+				imageTest.onload= function(){
+						img1.src=smallImg;
+						img1.setAttribute("width",600);
+						img1.setAttribute("height",400);
+					}
+					imageTest.onerror= function(){
+						img1.src="https://www.sideshow.com/storage/product-images/903683/space-marine-blood-ravens-deluxe-version_warhammer-40000-dawn-of-war-iii_gallery_5c4c080b501ef.jpg";
+						img1.setAttribute("height",600);
+						img1.setAttribute("width",600);
+						}
+				imageTest.src=smallImg;
+				
+				newDiv.appendChild(para);
+				newDiv.appendChild(description);
+				newDiv.appendChild(img1);
+				document.body.appendChild(newDiv);
+				
+				 
+				
+				var div1=document.createElement("div",id="Img Div");
+				div1.classList.add("ImageContainer");
+				div1.appendChild(img1);
+				overallDiv.appendChild(div1);
+					
+				
+				var photographerCred=document.createElement("p");
+				photographerCred.classList.add("photographerCred");
+				photographerCred.innerHTML=el.find("media\\:credit").text();
+				newDiv.appendChild(photographerCred);
+				overallDiv.appendChild(newDiv);
+				outsideDiv.appendChild(overallDiv);
+				
+			
+				 
+			} else{
+			document.body.appendChild(outsideDiv);
+			return false
+			}
+		});
+	});
+	}
+</script>
+
+
+
+</html>
